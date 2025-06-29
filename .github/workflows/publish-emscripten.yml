@@ -360,7 +360,7 @@ jobs:
                   <h2>📋 Usage Instructions</h2>
                   <h3>For Complete Archives (.tar.xz files):</h3>
                   <pre><code># Download the archive for your platform
-          wget https://zackees.github.io/fastled-wasm-compiler/[platform]/emsdk-[platform]-latest.tar.xz
+          wget https://fastled.github.io/emsdk-binaries/[platform]/emsdk-[platform]-latest.tar.xz
           
           # Extract the archive
           tar -xJf emsdk-[platform]-latest.tar.xz
@@ -372,9 +372,9 @@ jobs:
                   <h3>For Split Archives (part files):</h3>
                   <p>When archives exceed GitHub's size limits, they are split into multiple parts:</p>
                   <pre><code># Download all part files and the reconstruction script
-          wget https://zackees.github.io/fastled-wasm-compiler/[platform]/emsdk-[platform]*.tar.xz.part*
-          wget https://zackees.github.io/fastled-wasm-compiler/[platform]/emsdk-[platform]*-reconstruct.sh
-          wget https://zackees.github.io/fastled-wasm-compiler/[platform]/emsdk-[platform]*-manifest.txt
+          wget https://fastled.github.io/emsdk-binaries/[platform]/emsdk-[platform]*.tar.xz.part*
+          wget https://fastled.github.io/emsdk-binaries/[platform]/emsdk-[platform]*-reconstruct.sh
+          wget https://fastled.github.io/emsdk-binaries/[platform]/emsdk-[platform]*-manifest.txt
           
           # Make reconstruction script executable and run it
           chmod +x emsdk-[platform]*-reconstruct.sh
