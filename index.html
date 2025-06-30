@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastLED WASM Compiler - Emscripten SDK Artifacts</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .header p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.9;
+        }
+        .platforms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .platform-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #e1e5e9;
+        }
+        .platform-card h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .platform-icon {
+            font-size: 1.5rem;
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .file-list li {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+            overflow: hidden;
+        }
+        .file-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: #495057;
+            transition: background-color 0.2s;
+        }
+        .file-link:hover {
+            background-color: #e9ecef;
+            color: #2c3e50;
+        }
+        .file-type {
+            font-size: 0.8rem;
+            color: #6c757d;
+            font-weight: normal;
+        }
+        .instructions {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #28a745;
+        }
+        .instructions h2 {
+            color: #28a745;
+            margin-top: 0;
+        }
+        .instructions code {
+            background: #f8f9fa;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+        .instructions pre {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #e9ecef;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e1e5e9;
+            color: #6c757d;
+        }
+        .timestamp {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 FastLED WASM Compiler</h1>
+        <p>Emscripten SDK Artifacts</p>
+        <div class="timestamp">Generated: $(date -u +"%Y-%m-%d %H:%M:%S UTC")</div>
+    </div>
+
+    <div class="platforms">
+        <div class="platform-card">
+            <h2><span class="platform-icon">🍎</span> macOS Apple Silicon (ARM64)</h2>
+            <ul class="file-list">
+                <li><a href="./macos-arm64/emsdk-macos-arm64.tar.xz.partaa" class="file-link">emsdk-macos-arm64.tar.xz.partaa <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./macos-arm64/emsdk-macos-arm64.tar.xz.partab" class="file-link">emsdk-macos-arm64.tar.xz.partab <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./macos-arm64/emsdk-macos-arm64.tar.xz.partac" class="file-link">emsdk-macos-arm64.tar.xz.partac <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./macos-arm64/emsdk-macos-arm64.tar.xz.partad" class="file-link">emsdk-macos-arm64.tar.xz.partad <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./macos-arm64/emsdk-macos-arm64-reconstruct.sh" class="file-link">emsdk-macos-arm64-reconstruct.sh <span class="file-type">(Reconstruction Script)</span></a></li>
+                <li><a href="./macos-arm64/emsdk-macos-arm64-manifest.txt" class="file-link">emsdk-macos-arm64-manifest.txt <span class="file-type">(Manifest File)</span></a></li>
+            </ul>
+        </div>
+        <div class="platform-card">
+            <h2><span class="platform-icon">🐧</span> Ubuntu Linux</h2>
+            <ul class="file-list">
+                <li><a href="./ubuntu/emsdk-ubuntu-latest.tar.xz.partaa" class="file-link">emsdk-ubuntu-latest.tar.xz.partaa <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./ubuntu/emsdk-ubuntu-latest.tar.xz.partab" class="file-link">emsdk-ubuntu-latest.tar.xz.partab <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./ubuntu/emsdk-ubuntu-latest.tar.xz.partac" class="file-link">emsdk-ubuntu-latest.tar.xz.partac <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./ubuntu/emsdk-ubuntu-latest-reconstruct.sh" class="file-link">emsdk-ubuntu-latest-reconstruct.sh <span class="file-type">(Reconstruction Script)</span></a></li>
+                <li><a href="./ubuntu/emsdk-ubuntu-latest-manifest.txt" class="file-link">emsdk-ubuntu-latest-manifest.txt <span class="file-type">(Manifest File)</span></a></li>
+            </ul>
+        </div>
+        <div class="platform-card">
+            <h2><span class="platform-icon">🍎</span> macOS Intel (x86_64)</h2>
+            <ul class="file-list">
+                <li><a href="./macos-x86_64/emsdk-macos-x86_64.tar.xz.partaa" class="file-link">emsdk-macos-x86_64.tar.xz.partaa <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./macos-x86_64/emsdk-macos-x86_64.tar.xz.partab" class="file-link">emsdk-macos-x86_64.tar.xz.partab <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./macos-x86_64/emsdk-macos-x86_64.tar.xz.partac" class="file-link">emsdk-macos-x86_64.tar.xz.partac <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./macos-x86_64/emsdk-macos-x86_64.tar.xz.partad" class="file-link">emsdk-macos-x86_64.tar.xz.partad <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./macos-x86_64/emsdk-macos-x86_64-reconstruct.sh" class="file-link">emsdk-macos-x86_64-reconstruct.sh <span class="file-type">(Reconstruction Script)</span></a></li>
+                <li><a href="./macos-x86_64/emsdk-macos-x86_64-manifest.txt" class="file-link">emsdk-macos-x86_64-manifest.txt <span class="file-type">(Manifest File)</span></a></li>
+            </ul>
+        </div>
+        <div class="platform-card">
+            <h2><span class="platform-icon">🪟</span> Windows</h2>
+            <ul class="file-list">
+                <li><a href="./windows/emsdk-windows-latest.tar.xz.partaa" class="file-link">emsdk-windows-latest.tar.xz.partaa <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./windows/emsdk-windows-latest.tar.xz.partab" class="file-link">emsdk-windows-latest.tar.xz.partab <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./windows/emsdk-windows-latest.tar.xz.partac" class="file-link">emsdk-windows-latest.tar.xz.partac <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./windows/emsdk-windows-latest.tar.xz.partad" class="file-link">emsdk-windows-latest.tar.xz.partad <span class="file-type">(Split Archive Part)</span></a></li>
+                <li><a href="./windows/emsdk-windows-latest-reconstruct.sh" class="file-link">emsdk-windows-latest-reconstruct.sh <span class="file-type">(Reconstruction Script)</span></a></li>
+                <li><a href="./windows/emsdk-windows-latest-manifest.txt" class="file-link">emsdk-windows-latest-manifest.txt <span class="file-type">(Manifest File)</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="instructions">
+        <h2>📋 Usage Instructions</h2>
+        <h3>For Complete Archives (.tar.xz files):</h3>
+        <pre><code># Download the archive for your platform
+wget https://fastled.github.io/emsdk-binaries/[platform]/emsdk-[platform]-latest.tar.xz
+
+# Extract the archive
+tar -xJf emsdk-[platform]-latest.tar.xz
+
+# Setup environment
+cd emsdk
+source ./emsdk_env.sh</code></pre>
+
+        <h3>For Split Archives (part files):</h3>
+        <p>When archives exceed GitHub's size limits, they are split into multiple parts:</p>
+        <pre><code># Download all part files and the reconstruction script
+wget https://fastled.github.io/emsdk-binaries/[platform]/emsdk-[platform]*.tar.xz.part*
+wget https://fastled.github.io/emsdk-binaries/[platform]/emsdk-[platform]*-reconstruct.sh
+wget https://fastled.github.io/emsdk-binaries/[platform]/emsdk-[platform]*-manifest.txt
+
+# Make reconstruction script executable and run it
+chmod +x emsdk-[platform]*-reconstruct.sh
+./emsdk-[platform]*-reconstruct.sh
+
+# Extract the reconstructed archive
+tar -xJf emsdk-[platform]*.tar.xz
+
+# Setup environment
+cd emsdk
+source ./emsdk_env.sh</code></pre>
+
+        <h3>Manual Reconstruction (Alternative):</h3>
+        <pre><code># Combine all parts manually
+cat emsdk-[platform]*.tar.xz.part* > emsdk-[platform]-latest.tar.xz
+
+# Extract and setup
+tar -xJf emsdk-[platform]-latest.tar.xz
+cd emsdk
+source ./emsdk_env.sh</code></pre>
+    </div>
+
+    <div class="footer">
+        <p>Generated by <a href="https://github.com/zackees/fastled-wasm-compiler" target="_blank">FastLED WASM Compiler</a></p>
+        <p>For more information, visit the <a href="https://github.com/zackees/fastled-wasm-compiler" target="_blank">GitHub repository</a></p>
+    </div>
+</body>
+</html>
