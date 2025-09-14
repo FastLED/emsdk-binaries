@@ -1,0 +1,29 @@
+# EMSDK Split Archive Manifest
+# This file lists all the parts of the split EMSDK archive
+
+EMSDK_VERSION=unknown
+SPLIT_DATE=2025-09-14 02:40:21 UTC
+TOTAL_PARTS=4
+TOTAL_SIZE_MB=346
+COMPRESSION=tar.xz
+SPLIT_SIZE=95MB
+
+Split Parts:
+  emsdk-macos-x86_64.tar.xz.partaa (95MB)
+  emsdk-macos-x86_64.tar.xz.partab (95MB)
+  emsdk-macos-x86_64.tar.xz.partac (95MB)
+  emsdk-macos-x86_64.tar.xz.partad (61MB)
+
+Reconstruction Instructions:
+1. Download all emsdk-macos-x86_64.tar.xz.part* files to the same directory
+2. Download emsdk-macos-x86_64-reconstruct.sh to the same directory
+3. Run: chmod +x emsdk-macos-x86_64-reconstruct.sh
+4. Run: ./emsdk-macos-x86_64-reconstruct.sh
+5. Extract: tar -xJf emsdk-macos-x86_64.tar.xz
+6. Setup: cd emsdk && source ./emsdk_env.sh
+
+Alternative manual reconstruction:
+1. Download all parts to the same directory  
+2. Run: cat emsdk-macos-x86_64.tar.xz.part* > emsdk-macos-x86_64.tar.xz
+3. Extract: tar -xJf emsdk-macos-x86_64.tar.xz
+4. Setup: cd emsdk && source ./emsdk_env.sh

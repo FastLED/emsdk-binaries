@@ -1,0 +1,29 @@
+# EMSDK Split Archive Manifest
+# This file lists all the parts of the split EMSDK archive
+
+EMSDK_VERSION=unknown
+SPLIT_DATE=2025-09-14 02:34:39 UTC
+TOTAL_PARTS=4
+TOTAL_SIZE_MB=300
+COMPRESSION=tar.xz
+SPLIT_SIZE=95MB
+
+Split Parts:
+  emsdk-windows-latest.tar.xz.partaa (95MB)
+  emsdk-windows-latest.tar.xz.partab (95MB)
+  emsdk-windows-latest.tar.xz.partac (95MB)
+  emsdk-windows-latest.tar.xz.partad (15MB)
+
+Reconstruction Instructions:
+1. Download all emsdk-windows-latest.tar.xz.part* files to the same directory
+2. Download emsdk-windows-latest-reconstruct.sh to the same directory
+3. Run: chmod +x emsdk-windows-latest-reconstruct.sh
+4. Run: ./emsdk-windows-latest-reconstruct.sh
+5. Extract: tar -xJf emsdk-windows-latest.tar.xz
+6. Setup: cd emsdk && source ./emsdk_env.sh
+
+Alternative manual reconstruction:
+1. Download all parts to the same directory  
+2. Run: cat emsdk-windows-latest.tar.xz.part* > emsdk-windows-latest.tar.xz
+3. Extract: tar -xJf emsdk-windows-latest.tar.xz
+4. Setup: cd emsdk && source ./emsdk_env.sh

@@ -1,0 +1,441 @@
+name: Publish Emscripten Artifacts
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'tools/**'
+      - 'install_emscripten.sh'
+      - '.github/workflows/publish-emscripten.yml'
+  schedule:
+    # Run weekly on Sundays at 02:00 UTC
+    - cron: '0 2 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_name: ubuntu-latest
+          - os: macos-13  # Intel Mac runner
+            artifact_name: macos-x86_64
+          - os: macos-latest  # ARM Mac runner (Apple Silicon)
+            artifact_name: macos-arm64
+          - os: windows-latest
+            artifact_name: windows-latest
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Emscripten Setup Script
+        shell: bash
+        run: |
+          chmod +x install_emscripten.sh
+          ./install_emscripten.sh
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: emsdk-${{ matrix.artifact_name }}
+          path: |
+            ./emsdk-*.tar.xz
+            ./emsdk-*.tar.xz.part*
+            ./emsdk-*-reconstruct.sh
+            ./emsdk-*-manifest.txt
+          if-no-files-found: error
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Prepare artifacts for deployment
+        run: |
+          mkdir -p emsdk
+          
+          # Initialize arrays to collect platform information for index generation
+          declare -a platforms=()
+          declare -A platform_files=()
+          declare -A platform_descriptions=()
+          
+          # Process each artifact type
+          declare -A artifact_mapping=(
+            ["ubuntu-latest"]="ubuntu"
+            ["macos-x86_64"]="macos-x86_64"
+            ["macos-arm64"]="macos-arm64"
+            ["windows-latest"]="windows"
+          )
+          
+          declare -A platform_display_names=(
+            ["ubuntu"]="Ubuntu Linux"
+            ["macos-x86_64"]="macOS Intel (x86_64)"
+            ["macos-arm64"]="macOS Apple Silicon (ARM64)"
+            ["windows"]="Windows"
+          )
+          
+          for artifact_name in "${!artifact_mapping[@]}"; do
+            friendly_name="${artifact_mapping[$artifact_name]}"
+            display_name="${platform_display_names[$friendly_name]}"
+            
+            echo "Processing $artifact_name -> $friendly_name ($display_name)"
+            
+            # Create platform-specific subdirectory
+            platform_dir="./emsdk/$friendly_name"
+            mkdir -p "$platform_dir"
+            
+            # Find the artifact directory for this type
+            artifact_dir="./artifacts/emsdk-${artifact_name}"
+            platform_files_list=()
+            
+            if [ -d "$artifact_dir" ]; then
+              # Look for tar.xz files or tar.xz.part files in the artifact directory
+              found_archive=$(find "$artifact_dir" -name "*.tar.xz" -type f | head -1)
+              found_parts=$(find "$artifact_dir" -name "*.tar.xz.part*" -type f | head -1)
+              
+              if [ -n "$found_archive" ]; then
+                echo "Found single archive: $found_archive"
+                archive_name="emsdk-${friendly_name}-latest.tar.xz"
+                cp "$found_archive" "$platform_dir/$archive_name"
+                platform_files_list+=("$archive_name")
+                echo "Copied to: $platform_dir/$archive_name"
+                
+                # Copy to root for legacy compatibility
+                cp "$found_archive" "./emsdk/$archive_name"
+                
+              elif [ -n "$found_parts" ]; then
+                echo "Found split archive parts, copying all files..."
+                # Copy all split parts, reconstruction script, and manifest to platform directory
+                for file in "$artifact_dir"/emsdk-*.tar.xz.part*; do
+                  if [ -f "$file" ]; then
+                    filename=$(basename "$file")
+                    cp "$file" "$platform_dir/$filename"
+                    platform_files_list+=("$filename")
+                  fi
+                done
+                
+                for file in "$artifact_dir"/emsdk-*-reconstruct.sh; do
+                  if [ -f "$file" ]; then
+                    filename=$(basename "$file")
+                    cp "$file" "$platform_dir/$filename"
+                    platform_files_list+=("$filename")
+                  fi
+                done
+                
+                for file in "$artifact_dir"/emsdk-*-manifest.txt; do
+                  if [ -f "$file" ]; then
+                    filename=$(basename "$file")
+                    cp "$file" "$platform_dir/$filename"
+                    platform_files_list+=("$filename")
+                  fi
+                done
+                
+                # Also copy to root for legacy compatibility
+                cp "$artifact_dir"/emsdk-*.tar.xz.part* "./emsdk/" 2>/dev/null || true
+                cp "$artifact_dir"/emsdk-*-reconstruct.sh "./emsdk/" 2>/dev/null || true
+                cp "$artifact_dir"/emsdk-*-manifest.txt "./emsdk/" 2>/dev/null || true
+                
+                echo "Copied split archive parts for $friendly_name"
+              else
+                echo "No tar.xz or tar.xz.part files found in $artifact_dir"
+              fi
+              
+              # Store platform information for index generation
+              if [ ${#platform_files_list[@]} -gt 0 ]; then
+                platforms+=("$friendly_name")
+                platform_files["$friendly_name"]=$(IFS=','; echo "${platform_files_list[*]}")
+                platform_descriptions["$friendly_name"]="$display_name"
+              fi
+            else
+              echo "Artifact directory not found: $artifact_dir"
+            fi
+          done
+          
+          # Create legacy macos symlink pointing to macos-arm64 (default for newer systems)
+          if [ -f "./emsdk/emsdk-macos-arm64-latest.tar.xz" ]; then
+            ln -sf "emsdk-macos-arm64-latest.tar.xz" "./emsdk/emsdk-macos-latest.tar.xz"
+            echo "Created legacy symlink: emsdk-macos-latest.tar.xz -> emsdk-macos-arm64-latest.tar.xz"
+          fi
+          
+          # Generate index.html file
+          echo "Generating index.html..."
+          cat > ./emsdk/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>FastLED WASM Compiler - Emscripten SDK Artifacts</title>
+              <style>
+                  body {
+                      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+                      max-width: 1200px;
+                      margin: 0 auto;
+                      padding: 20px;
+                      line-height: 1.6;
+                      color: #333;
+                      background: #f5f5f5;
+                  }
+                  .header {
+                      text-align: center;
+                      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                      color: white;
+                      padding: 2rem;
+                      border-radius: 10px;
+                      margin-bottom: 2rem;
+                      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                  }
+                  .header h1 {
+                      margin: 0;
+                      font-size: 2.5rem;
+                  }
+                  .header p {
+                      margin: 0.5rem 0 0 0;
+                      opacity: 0.9;
+                  }
+                  .platforms {
+                      display: grid;
+                      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                      gap: 1.5rem;
+                      margin-bottom: 2rem;
+                  }
+                  .platform-card {
+                      background: white;
+                      border-radius: 10px;
+                      padding: 1.5rem;
+                      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                      border: 1px solid #e1e5e9;
+                  }
+                  .platform-card h2 {
+                      color: #2c3e50;
+                      margin-top: 0;
+                      display: flex;
+                      align-items: center;
+                      gap: 0.5rem;
+                  }
+                  .platform-icon {
+                      font-size: 1.5rem;
+                  }
+                  .file-list {
+                      list-style: none;
+                      padding: 0;
+                      margin: 1rem 0;
+                  }
+                  .file-list li {
+                      background: #f8f9fa;
+                      border: 1px solid #e9ecef;
+                      border-radius: 5px;
+                      margin: 0.5rem 0;
+                      overflow: hidden;
+                  }
+                  .file-link {
+                      display: block;
+                      padding: 0.75rem 1rem;
+                      text-decoration: none;
+                      color: #495057;
+                      transition: background-color 0.2s;
+                  }
+                  .file-link:hover {
+                      background-color: #e9ecef;
+                      color: #2c3e50;
+                  }
+                  .file-type {
+                      font-size: 0.8rem;
+                      color: #6c757d;
+                      font-weight: normal;
+                  }
+                  .instructions {
+                      background: white;
+                      border-radius: 10px;
+                      padding: 1.5rem;
+                      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                      border-left: 4px solid #28a745;
+                  }
+                  .instructions h2 {
+                      color: #28a745;
+                      margin-top: 0;
+                  }
+                  .instructions code {
+                      background: #f8f9fa;
+                      padding: 2px 4px;
+                      border-radius: 3px;
+                      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+                  }
+                  .instructions pre {
+                      background: #f8f9fa;
+                      padding: 1rem;
+                      border-radius: 5px;
+                      overflow-x: auto;
+                      border: 1px solid #e9ecef;
+                  }
+                  .footer {
+                      text-align: center;
+                      margin-top: 2rem;
+                      padding-top: 1rem;
+                      border-top: 1px solid #e1e5e9;
+                      color: #6c757d;
+                  }
+                  .timestamp {
+                      font-size: 0.9rem;
+                      color: #6c757d;
+                  }
+              </style>
+          </head>
+          <body>
+              <div class="header">
+                  <h1>🚀 FastLED WASM Compiler</h1>
+                  <p>Emscripten SDK Artifacts</p>
+                  <div class="timestamp">Generated: $(date -u +"%Y-%m-%d %H:%M:%S UTC")</div>
+              </div>
+          
+              <div class="platforms">
+          EOF
+          
+          # Add platform sections to index.html
+          for platform in "${platforms[@]}"; do
+            display_name="${platform_descriptions[$platform]}"
+            files_str="${platform_files[$platform]}"
+            IFS=',' read -ra files_array <<< "$files_str"
+            
+            # Determine platform icon
+            case "$platform" in
+              "ubuntu") icon="🐧" ;;
+              "macos-x86_64"|"macos-arm64") icon="🍎" ;;
+              "windows") icon="🪟" ;;
+              *) icon="💻" ;;
+            esac
+            
+            cat >> ./emsdk/index.html << EOF
+                  <div class="platform-card">
+                      <h2><span class="platform-icon">$icon</span> $display_name</h2>
+                      <ul class="file-list">
+          EOF
+            
+            for file in "${files_array[@]}"; do
+              if [[ "$file" == *.tar.xz ]]; then
+                file_type="<span class=\"file-type\">(Complete Archive)</span>"
+              elif [[ "$file" == *.tar.xz.part* ]]; then
+                file_type="<span class=\"file-type\">(Split Archive Part)</span>"
+              elif [[ "$file" == *-reconstruct.sh ]]; then
+                file_type="<span class=\"file-type\">(Reconstruction Script)</span>"
+              elif [[ "$file" == *-manifest.txt ]]; then
+                file_type="<span class=\"file-type\">(Manifest File)</span>"
+              else
+                file_type=""
+              fi
+              
+              cat >> ./emsdk/index.html << EOF
+                          <li><a href="./$platform/$file" class="file-link">$file $file_type</a></li>
+          EOF
+            done
+            
+            cat >> ./emsdk/index.html << EOF
+                      </ul>
+                  </div>
+          EOF
+          done
+          
+          # Add footer to index.html
+          cat >> ./emsdk/index.html << 'EOF'
+              </div>
+          
+              <div class="instructions">
+                  <h2>📋 Usage Instructions</h2>
+                  <h3>For Complete Archives (.tar.xz files):</h3>
+                  <pre><code># Download the archive for your platform
+          wget https://zackees.github.io/fastled-wasm-compiler/[platform]/emsdk-[platform]-latest.tar.xz
+          
+          # Extract the archive
+          tar -xJf emsdk-[platform]-latest.tar.xz
+          
+          # Setup environment
+          cd emsdk
+          source ./emsdk_env.sh</code></pre>
+          
+                  <h3>For Split Archives (part files):</h3>
+                  <p>When archives exceed GitHub's size limits, they are split into multiple parts:</p>
+                  <pre><code># Download all part files and the reconstruction script
+          wget https://zackees.github.io/fastled-wasm-compiler/[platform]/emsdk-[platform]*.tar.xz.part*
+          wget https://zackees.github.io/fastled-wasm-compiler/[platform]/emsdk-[platform]*-reconstruct.sh
+          wget https://zackees.github.io/fastled-wasm-compiler/[platform]/emsdk-[platform]*-manifest.txt
+          
+          # Make reconstruction script executable and run it
+          chmod +x emsdk-[platform]*-reconstruct.sh
+          ./emsdk-[platform]*-reconstruct.sh
+          
+          # Extract the reconstructed archive
+          tar -xJf emsdk-[platform]*.tar.xz
+          
+          # Setup environment
+          cd emsdk
+          source ./emsdk_env.sh</code></pre>
+          
+                  <h3>Manual Reconstruction (Alternative):</h3>
+                  <pre><code># Combine all parts manually
+          cat emsdk-[platform]*.tar.xz.part* > emsdk-[platform]-latest.tar.xz
+          
+          # Extract and setup
+          tar -xJf emsdk-[platform]-latest.tar.xz
+          cd emsdk
+          source ./emsdk_env.sh</code></pre>
+              </div>
+          
+              <div class="footer">
+                  <p>Generated by <a href="https://github.com/zackees/fastled-wasm-compiler" target="_blank">FastLED WASM Compiler</a></p>
+                  <p>For more information, visit the <a href="https://github.com/zackees/fastled-wasm-compiler" target="_blank">GitHub repository</a></p>
+              </div>
+          </body>
+          </html>
+          EOF
+          
+          echo "Final artifacts structure:"
+          find ./emsdk -type f | sort
+          
+          # Check file sizes to ensure they're under GitHub's 100MB limit
+          echo "File size summary:"
+          for platform in "${platforms[@]}"; do
+            echo "Platform: $platform"
+            for file in ./emsdk/$platform/*; do
+              if [ -f "$file" ] && [ ! -L "$file" ]; then
+                size=$(stat -c%s "$file" 2>/dev/null || stat -f%z "$file" 2>/dev/null || echo "0")
+                size_mb=$((size / 1024 / 1024))
+                filename=$(basename "$file")
+                echo "  $filename = ${size_mb}MB"
+                if [ $size_mb -gt 95 ]; then
+                  echo "  WARNING: $filename is ${size_mb}MB, approaching GitHub's 100MB limit!"
+                fi
+              fi
+            done
+          done
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: emsdk
+          clean: true
+          clean-exclude: |
+            .nojekyll
+            CNAME
+          single-commit: true
+          force: true
+          commit-message: "Replace Emscripten SDK artifacts"
+          git-config-name: github-actions[bot]
+          git-config-email: github-actions[bot]@users.noreply.github.com
