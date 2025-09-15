@@ -1,0 +1,232 @@
+name: Test Build Process
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test-build:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_name: ubuntu-latest
+          - os: macos-13  # Intel Mac runner
+            artifact_name: macos-x86_64
+          - os: macos-latest  # ARM Mac runner (Apple Silicon)
+            artifact_name: macos-arm64
+          - os: windows-latest
+            artifact_name: windows-latest
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Emscripten Setup Script
+        shell: bash
+        run: |
+          chmod +x install_emscripten.sh
+          ./install_emscripten.sh
+
+      - name: Verify Build Artifacts
+        shell: bash
+        run: |
+          echo "Checking for build artifacts..."
+
+          # Check if .build directory exists
+          if [ ! -d ".build" ]; then
+            echo "ERROR: .build directory not found"
+            exit 1
+          fi
+
+          # Look for either complete archive or split parts
+          found_archive=$(find .build -name "emsdk-*.tar.xz" -type f | head -1)
+          found_parts=$(find .build -name "emsdk-*.tar.xz.part*" -type f | head -1)
+
+          if [ -n "$found_archive" ]; then
+            echo "✓ Found complete archive: $found_archive"
+            archive_file="$found_archive"
+          elif [ -n "$found_parts" ]; then
+            echo "✓ Found split archive parts"
+            # List all parts
+            find .build -name "emsdk-*.tar.xz.part*" -type f | sort
+
+            # Check for reconstruction script
+            reconstruct_script=$(find .build -name "*-reconstruct.sh" -type f | head -1)
+            if [ -n "$reconstruct_script" ]; then
+              echo "✓ Found reconstruction script: $reconstruct_script"
+
+              # Test reconstruction
+              echo "Testing archive reconstruction..."
+              cd .build
+              chmod +x "$(basename "$reconstruct_script")"
+              "./$(basename "$reconstruct_script")"
+
+              # Find the reconstructed archive
+              reconstructed=$(find . -name "emsdk-*.tar.xz" -type f | head -1)
+              if [ -n "$reconstructed" ]; then
+                echo "✓ Successfully reconstructed archive: $reconstructed"
+                archive_file="$reconstructed"
+                cd ..
+              else
+                echo "ERROR: Failed to reconstruct archive"
+                exit 1
+              fi
+            else
+              echo "ERROR: No reconstruction script found for split archive"
+              exit 1
+            fi
+          else
+            echo "ERROR: No build artifacts found"
+            exit 1
+          fi
+
+      - name: Test Archive Extraction
+        shell: bash
+        run: |
+          echo "Testing archive extraction..."
+
+          # Find the archive to test
+          if [ -f ".build/emsdk-${{ matrix.artifact_name }}.tar.xz" ]; then
+            archive_file=".build/emsdk-${{ matrix.artifact_name }}.tar.xz"
+          else
+            archive_file=$(find .build -name "emsdk-*.tar.xz" -type f | head -1)
+          fi
+
+          if [ -z "$archive_file" ]; then
+            echo "ERROR: No archive file found for testing"
+            exit 1
+          fi
+
+          echo "Testing extraction of: $archive_file"
+
+          # Create test directory
+          mkdir -p test-extract
+          cd test-extract
+
+          # Extract the archive
+          tar -xJf "../$archive_file"
+
+          # Verify EMSDK structure
+          if [ ! -d "emsdk" ]; then
+            echo "ERROR: emsdk directory not found in extracted archive"
+            exit 1
+          fi
+
+          echo "✓ Archive extracted successfully"
+
+          # Check for essential EMSDK files
+          essential_files=(
+            "emsdk/emsdk"
+            "emsdk/emsdk_env.sh"
+          )
+
+          for file in "${essential_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "ERROR: Essential file not found: $file"
+              exit 1
+            fi
+            echo "✓ Found essential file: $file"
+          done
+
+      - name: Test EMSDK Environment
+        shell: bash
+        run: |
+          echo "Testing EMSDK environment setup..."
+
+          cd test-extract/emsdk
+
+          # Source the environment
+          source ./emsdk_env.sh
+
+          # Check if emcc is available
+          if ! command -v emcc >/dev/null 2>&1; then
+            echo "ERROR: emcc not found in PATH after sourcing emsdk_env.sh"
+            exit 1
+          fi
+
+          echo "✓ emcc found in PATH"
+
+          # Test emcc version
+          emcc_version=$(emcc --version | head -1)
+          echo "✓ emcc version: $emcc_version"
+
+          # Test simple compilation
+          echo "Testing simple compilation..."
+          echo 'int main() { return 0; }' > test.c
+
+          if emcc test.c -o test.js; then
+            echo "✓ Simple compilation test passed"
+          else
+            echo "ERROR: Simple compilation test failed"
+            exit 1
+          fi
+
+          # Check if the output files were created
+          if [ -f "test.js" ] && [ -f "test.wasm" ]; then
+            echo "✓ Output files created successfully"
+          else
+            echo "ERROR: Expected output files not found"
+            exit 1
+          fi
+
+      - name: Validate Archive Size
+        shell: bash
+        run: |
+          echo "Validating archive sizes..."
+
+          # Function to get file size in MB
+          get_size_mb() {
+            local file="$1"
+            if command -v stat >/dev/null 2>&1; then
+              case "$(uname)" in
+                Darwin|*BSD)
+                  stat -f%z "$file" 2>/dev/null | awk '{print int($1/1024/1024)}'
+                  ;;
+                *)
+                  stat -c%s "$file" 2>/dev/null | awk '{print int($1/1024/1024)}'
+                  ;;
+              esac
+            else
+              ls -l "$file" 2>/dev/null | awk '{print int($5/1024/1024)}'
+            fi
+          }
+
+          # Check complete archives
+          for archive in .build/emsdk-*.tar.xz; do
+            if [ -f "$archive" ]; then
+              size_mb=$(get_size_mb "$archive")
+              echo "Archive: $(basename "$archive") - ${size_mb}MB"
+
+              if [ "$size_mb" -gt 100 ]; then
+                echo "ERROR: Archive exceeds 100MB GitHub limit: ${size_mb}MB"
+                exit 1
+              fi
+            fi
+          done
+
+          # Check split parts
+          for part in .build/emsdk-*.tar.xz.part*; do
+            if [ -f "$part" ]; then
+              size_mb=$(get_size_mb "$part")
+              echo "Part: $(basename "$part") - ${size_mb}MB"
+
+              if [ "$size_mb" -gt 95 ]; then
+                echo "ERROR: Split part exceeds 95MB limit: ${size_mb}MB"
+                exit 1
+              fi
+            fi
+          done
+
+          echo "✓ All artifacts are within size limits"
+
+      - name: Clean Up Test Files
+        shell: bash
+        run: |
+          echo "Cleaning up test files..."
+          rm -rf test-extract
+          echo "✓ Cleanup completed"

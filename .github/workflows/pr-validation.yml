@@ -1,0 +1,80 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check for Breaking Changes
+        run: |
+          echo "Checking for potentially breaking changes..."
+
+          # Check if install_emscripten.sh was modified
+          if git diff --name-only origin/main...HEAD | grep -q "install_emscripten.sh"; then
+            echo "⚠️  install_emscripten.sh was modified - this will trigger full build testing"
+          fi
+
+          # Check if workflow files were modified
+          if git diff --name-only origin/main...HEAD | grep -q ".github/workflows/"; then
+            echo "⚠️  Workflow files were modified - validating syntax"
+
+            # Basic validation of workflow files
+            for workflow in .github/workflows/*.yml .github/workflows/*.yaml; do
+              if [ -f "$workflow" ]; then
+                echo "Checking: $workflow"
+                # Basic YAML structure check
+                if ! grep -q "^name:" "$workflow"; then
+                  echo "ERROR: Workflow missing 'name' field: $workflow"
+                  exit 1
+                fi
+                if ! grep -q "^on:" "$workflow"; then
+                  echo "ERROR: Workflow missing 'on' field: $workflow"
+                  exit 1
+                fi
+                echo "✓ Basic structure OK: $workflow"
+              fi
+            done
+          fi
+
+          echo "✓ No obvious breaking changes detected"
+
+  quick-build-test:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.changed_files, 'install_emscripten.sh') || contains(github.event.pull_request.changed_files, 'tools/')
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Quick Build Test
+        timeout-minutes: 30
+        run: |
+          echo "Running quick build test for PR validation..."
+
+          # Set a shorter timeout for PR validation
+          export EMCC_OPTIMIZE_SIZE=0  # Disable some optimizations for faster build
+          export CMAKE_BUILD_TYPE=Debug  # Use debug build for faster compilation
+
+          chmod +x install_emscripten.sh
+
+          # Run the build process
+          if timeout 1800 ./install_emscripten.sh; then
+            echo "✓ Quick build test passed"
+          else
+            echo "❌ Quick build test failed or timed out"
+            exit 1
+          fi
+
+          # Basic verification that artifacts were created
+          if ls .build/emsdk-*.tar.xz* >/dev/null 2>&1; then
+            echo "✓ Build artifacts were created"
+          else
+            echo "❌ No build artifacts found"
+            exit 1
+          fi
