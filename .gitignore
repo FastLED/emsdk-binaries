@@ -1,0 +1,38 @@
+# Build artifacts directory
+.build/
+
+# EMSDK installation directory (when built locally)
+emsdk/
+
+# Compiled artifacts
+*.wasm
+*.html
+*.js
+*.wasm.map
+output.txt
+
+# Archive files
+*.tar.xz
+*.tar.xz.part*
+*-reconstruct.sh
+*-manifest.txt
+
+# Test outputs
+test_results_*.md
+hello_world.*
+
+# OS specific files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# Temporary files
+*.tmp
+*.temp
+*.log

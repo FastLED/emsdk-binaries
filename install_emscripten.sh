@@ -2,7 +2,11 @@
 
 set -e
 
-EMSDK_DIR="$HOME/emsdk"
+# Create .build directory for all artifacts
+BUILD_DIR="./.build"
+mkdir -p "$BUILD_DIR"
+
+EMSDK_DIR="$BUILD_DIR/emsdk"
 
 # Set aggressive optimization flags for SDK compilation
 export CFLAGS="-Oz -flto -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-unwind-tables -fno-asynchronous-unwind-tables -fomit-frame-pointer -ffast-math -fno-stack-protector"
@@ -37,7 +41,7 @@ emcc -v
 
 echo "EMSDK installation completed. Creating archive..."
 
-cd ..
+cd "$BUILD_DIR/.."
 
 # Map uname output to GitHub Actions OS names for consistency, with Mac architecture detection
 case "$(uname | tr '[:upper:]' '[:lower:]')" in
@@ -88,14 +92,16 @@ get_file_size() {
     fi
 }
 
-echo "Creating compressed artifact: ${ARTIFACT_NAME}.tar.xz"
+echo "Creating compressed artifact in .build directory: ${BUILD_DIR}/${ARTIFACT_NAME}.tar.xz"
 
 # Create a highly compressed tarball with XZ compression (better than gzip)
 echo "Using XZ compression with maximum compression level..."
+cd "$BUILD_DIR"
 XZ_OPT=-9 tar -cJf "${ARTIFACT_NAME}.tar.xz" emsdk
+cd ..
 
 # Check the size of the created artifact
-size=$(get_file_size "${ARTIFACT_NAME}.tar.xz")
+size=$(get_file_size "${BUILD_DIR}/${ARTIFACT_NAME}.tar.xz")
 if [ -n "$size" ] && [ "$size" -gt 0 ]; then
     size_mb=$((size / 1024 / 1024))
     echo "Created artifact: ${ARTIFACT_NAME}.tar.xz (${size_mb}MB)"
@@ -105,17 +111,17 @@ if [ -n "$size" ] && [ "$size" -gt 0 ]; then
         echo "Splitting archive into 95MB chunks..."
         
         # Split the tar.xz file into 95MB chunks
-        split -b 95M "${ARTIFACT_NAME}.tar.xz" "${ARTIFACT_NAME}.tar.xz.part"
+        split -b 95M "${BUILD_DIR}/${ARTIFACT_NAME}.tar.xz" "${BUILD_DIR}/${ARTIFACT_NAME}.tar.xz.part"
         
         # Remove the original large file
-        rm "${ARTIFACT_NAME}.tar.xz"
+        rm "${BUILD_DIR}/${ARTIFACT_NAME}.tar.xz"
         
         # Check the created parts
         success=true
         total_size=0
         part_count=0
         
-        for part in "${ARTIFACT_NAME}".tar.xz.part*; do
+        for part in "${BUILD_DIR}/${ARTIFACT_NAME}".tar.xz.part*; do
             if [ -f "$part" ]; then
                 part_count=$((part_count + 1))
                 size=$(get_file_size "$part")
@@ -140,7 +146,7 @@ if [ -n "$size" ] && [ "$size" -gt 0 ]; then
             
             # Create a reconstruction script
             echo "Creating reconstruction script..."
-            cat > "${ARTIFACT_NAME}-reconstruct.sh" << 'EOF'
+            cat > "${BUILD_DIR}/${ARTIFACT_NAME}-reconstruct.sh" << 'EOF'
 #!/bin/bash
 
 # EMSDK Archive Reconstruction Script
@@ -207,11 +213,11 @@ fi
 EOF
             
             # Make the reconstruction script executable
-            chmod +x "${ARTIFACT_NAME}-reconstruct.sh"
+            chmod +x "${BUILD_DIR}/${ARTIFACT_NAME}-reconstruct.sh"
             
             # Create a manifest file listing all parts
             echo "Creating manifest file..."
-            cat > "${ARTIFACT_NAME}-manifest.txt" << EOF
+            cat > "${BUILD_DIR}/${ARTIFACT_NAME}-manifest.txt" << EOF
 # EMSDK Split Archive Manifest
 # This file lists all the parts of the split EMSDK archive
 
@@ -224,15 +230,16 @@ SPLIT_SIZE=95MB
 
 Split Parts:
 EOF
-            for part in "${ARTIFACT_NAME}".tar.xz.part*; do
+            for part in "${BUILD_DIR}/${ARTIFACT_NAME}".tar.xz.part*; do
                 if [ -f "$part" ]; then
                     size=$(get_file_size "$part")
                     size_mb=$((size / 1024 / 1024))
-                    echo "  $part (${size_mb}MB)" >> "${ARTIFACT_NAME}-manifest.txt"
+                    basename_part=$(basename "$part")
+                    echo "  $basename_part (${size_mb}MB)" >> "${BUILD_DIR}/${ARTIFACT_NAME}-manifest.txt"
                 fi
             done
             
-            cat >> "${ARTIFACT_NAME}-manifest.txt" << EOF
+            cat >> "${BUILD_DIR}/${ARTIFACT_NAME}-manifest.txt" << EOF
 
 Reconstruction Instructions:
 1. Download all ${ARTIFACT_NAME}.tar.xz.part* files to the same directory
@@ -263,7 +270,7 @@ fi
 
 # Also create the artifact in the original repository directory if we're not already there
 if [ "$PWD" != "$GITHUB_WORKSPACE" ] && [ -n "$GITHUB_WORKSPACE" ]; then
-    cp "${ARTIFACT_NAME}"*.tar.xz* "$GITHUB_WORKSPACE/" 2>/dev/null || true
-    cp "${ARTIFACT_NAME}"*-reconstruct.sh "$GITHUB_WORKSPACE/" 2>/dev/null || true
-    cp "${ARTIFACT_NAME}"*.txt "$GITHUB_WORKSPACE/" 2>/dev/null || true
+    cp "${BUILD_DIR}/${ARTIFACT_NAME}"*.tar.xz* "$GITHUB_WORKSPACE/" 2>/dev/null || true
+    cp "${BUILD_DIR}/${ARTIFACT_NAME}"*-reconstruct.sh "$GITHUB_WORKSPACE/" 2>/dev/null || true
+    cp "${BUILD_DIR}/${ARTIFACT_NAME}"*.txt "$GITHUB_WORKSPACE/" 2>/dev/null || true
 fi
