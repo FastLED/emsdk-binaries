@@ -41,7 +41,7 @@ emcc -v
 
 echo "EMSDK installation completed. Creating archive..."
 
-cd "$BUILD_DIR/.."
+cd ..
 
 # Map uname output to GitHub Actions OS names for consistency, with Mac architecture detection
 case "$(uname | tr '[:upper:]' '[:lower:]')" in
