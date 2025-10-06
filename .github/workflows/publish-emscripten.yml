@@ -48,10 +48,10 @@ jobs:
         with:
           name: emsdk-${{ matrix.artifact_name }}
           path: |
-            ./emsdk-*.tar.xz
-            ./emsdk-*.tar.xz.part*
-            ./emsdk-*-reconstruct.sh
-            ./emsdk-*-manifest.txt
+            ./.build/emsdk-*.tar.xz
+            ./.build/emsdk-*.tar.xz.part*
+            ./.build/emsdk-*-reconstruct.sh
+            ./.build/emsdk-*-manifest.txt
           if-no-files-found: error
 
   deploy:

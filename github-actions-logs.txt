@@ -1,0 +1,210 @@
+build (macos-13, macos-x86_64)	UNKNOWN STEP	﻿2025-10-05T21:32:30.3566590Z Current runner version: '2.328.0'
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3595120Z ##[group]Runner Image Provisioner
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3596050Z Hosted Compute Agent
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3596670Z Version: 20251003.420
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3597400Z Commit: 2377dc5bf0f6cca5c863dfc4fa0dabc70e08de87
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3598290Z Build Date: 2025-10-03T16:01:39Z
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3599010Z ##[endgroup]
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3599610Z ##[group]Operating System
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3600280Z macOS
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3600820Z 13.7.6
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3601360Z 22H625
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3601890Z ##[endgroup]
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3602470Z ##[group]Runner Image
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3603110Z Image: macos-13
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3603680Z Version: 20250908.1476
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3605080Z Included Software: https://github.com/actions/runner-images/blob/macos-13/20250908.1476/images/macos/macos-13-Readme.md
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3607260Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-13%2F20250908.1476
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3608550Z ##[endgroup]
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3609980Z ##[group]GITHUB_TOKEN Permissions
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3612100Z Contents: write
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3612870Z Metadata: read
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3613470Z Pages: write
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3614040Z ##[endgroup]
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3616560Z Secret source: Actions
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.3617370Z Prepare workflow directory
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.4176410Z Prepare all required actions
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.4245150Z Getting action download info
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:30.9202870Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.3653800Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.7288440Z Complete job name: build (macos-13, macos-x86_64)
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.7995170Z ##[group]Run actions/checkout@v4
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.7996550Z with:
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.7997250Z   repository: FastLED/emsdk-binaries
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.7998340Z   token: ***
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.7999070Z   ssh-strict: true
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.7999740Z   ssh-user: git
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.8000400Z   persist-credentials: true
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.8001170Z   clean: true
+build (macos-13, macos-x86_x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.8018710Z   sparse-checkout-cone-mode: true
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.8019550Z   fetch-depth: 1
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.8020120Z   fetch-tags: false
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.8020720Z   show-progress: true
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.8021320Z   lfs: false
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.8021890Z   submodules: false
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.8022490Z   set-safe-directory: true
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:31.8023680Z ##[endgroup]
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.1372410Z Syncing repository: FastLED/emsdk-binaries
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.1375140Z ##[group]Getting Git version info
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.1376470Z Working directory is '/Users/runner/work/emsdk-binaries/emsdk-binaries'
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.1378150Z [command]/usr/local/bin/git version
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.1686250Z git version 2.50.1
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.1720200Z ##[endgroup]
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.1742360Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/2a48b2f3-3a90-4bda-afcf-cec914e2ca0e/.gitconfig'
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.1757220Z Temporarily overriding HOME='/Users/runner/work/_temp/2a48b2f3-3a90-4bda-afcf-cec914e2ca0e' before making global git config changes
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.1759360Z Adding repository directory to the temporary git global config as a safe directory
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.1764210Z [command]/usr/local/bin/git config --global --add safe.directory /Users/runner/work/emsdk-binaries/emsdk-binaries
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.1881060Z Deleting the contents of '/Users/runner/work/emsdk-binaries/emsdk-binaries'
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.1885890Z ##[group]Initializing the repository
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.1892670Z [command]/usr/local/bin/git init /Users/runner/work/emsdk-binaries/emsdk-binaries
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2143130Z hint: Using 'master' as the name for the initial branch. This default branch name
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2144890Z hint: is subject to change. To configure the initial branch name to use in all
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2147640Z hint: of your new repositories, which will suppress this warning, call:
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2148840Z hint:
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2149710Z hint: 	git config --global init.defaultBranch <name>
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2150630Z hint:
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2151510Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2152880Z hint: 'development'. The just-created branch can be renamed via this command:
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2153990Z hint:
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2154590Z hint: 	git branch -m <name>
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2155300Z hint:
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2156210Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2157850Z Initialized empty Git repository in /Users/runner/work/emsdk-binaries/emsdk-binaries/.git/
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2160630Z [command]/usr/local/bin/git remote add origin https://github.com/FastLED/emsdk-binaries
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2264230Z ##[endgroup]
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2265440Z ##[group]Disabling automatic garbage collection
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2269280Z [command]/usr/local/bin/git config --local gc.auto 0
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2359040Z ##[endgroup]
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2360910Z ##[group]Setting up auth
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2377450Z [command]/usr/local/bin/git config --local --name-only --get-regexp core\.sshCommand
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.2672110Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.4055670Z [command]/usr/local/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.4145410Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.5204990Z [command]/usr/local/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.5289540Z ##[endgroup]
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.5290870Z ##[group]Fetching the repository
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.5299190Z [command]/usr/local/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +f42097db58629c70788d7767891dd0a5454de02f:refs/remotes/origin/main
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.9670270Z From https://github.com/FastLED/emsdk-binaries
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.9671640Z  * [new ref]         f42097db58629c70788d7767891dd0a5454de02f -> origin/main
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.9753900Z ##[endgroup]
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.9755080Z ##[group]Determining the checkout info
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.9756320Z ##[endgroup]
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.9760320Z [command]/usr/local/bin/git sparse-checkout disable
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.9855160Z [command]/usr/local/bin/git config --local --unset-all extensions.worktreeConfig
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.9933870Z ##[group]Checking out the ref
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:32.9938120Z [command]/usr/local/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.0091030Z Switched to a new branch 'main'
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.0098550Z branch 'main' set up to track 'origin/main'.
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.0104950Z ##[endgroup]
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.0194500Z [command]/usr/local/bin/git log -1 --format=%H
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.0262410Z f42097db58629c70788d7767891dd0a5454de02f
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.0576470Z ##[group]Run chmod +x install_emscripten.sh
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.0578380Z [36;1mchmod +x install_emscripten.sh[0m
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.0579740Z [36;1m./install_emscripten.sh[0m
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.0736550Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.0737810Z ##[endgroup]
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.1120930Z Setting optimization flags for SDK compilation:
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.1123780Z CFLAGS: -Oz -flto -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-unwind-tables -fno-asynchronous-unwind-tables -fomit-frame-pointer -ffast-math -fno-stack-protector
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.1127730Z CXXFLAGS: -Oz -flto -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-unwind-tables -fno-asynchronous-unwind-tables -fomit-frame-pointer -ffast-math -fno-stack-protector
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.1131220Z LDFLAGS: -Oz -flto -Wl,--gc-sections -Wl,--strip-all -Wl,--strip-debug -s
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:33.1193350Z Cloning into './.build/emsdk'...
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:34.0164500Z Already up to date.
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:34.7681250Z
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:34.8957250Z #=#=#
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:35.1246880Z ##O#-#
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:35.2098410Z                                                                            0.1%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:35.2312810Z                                                                            0.3%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:35.3316810Z                                                                            0.7%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:35.4323270Z #                                                                          1.9%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:35.5331450Z ###                                                                        5.2%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:35.6687790Z #########                                                                 13.8%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:35.7694480Z ############                                                              17.2%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:35.8695760Z ##################                                                        25.7%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:35.9878950Z ########################                                                  34.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:36.0883710Z #################################                                         46.9%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:36.1981420Z ###########################################                               60.7%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:36.2986720Z ###################################################                       72.2%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:36.3992670Z ############################################################              84.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:36.4261740Z #####################################################################     96.7%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:36.4263360Z ######################################################################## 100.0%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:39.1528940Z
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:39.2666440Z #=#=#
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:39.3684350Z                                                                            0.0%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:39.4684210Z                                                                            0.1%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:39.5688050Z                                                                            0.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:39.6697840Z                                                                            1.1%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:39.7698780Z ##                                                                         3.1%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:39.8717250Z ######                                                                     8.5%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:39.9796480Z ###############                                                           21.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:40.0920860Z ########################                                                  33.6%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:40.2003120Z ###############################                                           43.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:40.3135620Z #########################################                                 57.8%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:40.4005870Z ################################################                          67.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:40.5011280Z #############################################################             85.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:40.5386990Z ####################################################################      94.8%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:40.5387780Z ######################################################################## 100.0%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:42.6123600Z
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:42.7450130Z #=#=#
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:42.8467370Z                                                                            0.0%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:42.9470020Z                                                                            0.0%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:43.0474950Z                                                                            0.1%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:43.1484930Z                                                                            0.2%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:43.2486470Z                                                                            0.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:43.3491520Z                                                                            1.1%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:43.4597160Z ##                                                                         2.9%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:43.6325540Z ##                                                                         3.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:43.7342540Z ###                                                                        5.3%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:43.8371180Z #####                                                                      7.3%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:43.9390740Z ######                                                                     9.3%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:44.0397780Z ########                                                                  11.3%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:44.1402520Z #########                                                                 13.2%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:44.2402610Z ##########                                                                15.2%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:44.3402090Z ############                                                              17.1%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:44.4405610Z #############                                                             19.0%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:44.5413110Z ###############                                                           20.9%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:44.6424350Z ################                                                          22.8%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:44.7428660Z #################                                                         24.7%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:44.8433480Z ###################                                                       26.6%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:44.9422640Z ####################                                                      28.5%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:45.0430090Z #####################                                                     30.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:45.1436650Z #######################                                                   32.3%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:45.2436910Z ########################                                                  34.2%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:45.3442530Z #########################                                                 36.1%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:45.4447840Z ###########################                                               38.0%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:45.5456850Z ############################                                              39.9%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:45.6481380Z ##############################                                            41.8%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:45.7489890Z ###############################                                           43.7%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:45.8974610Z ################################                                          45.6%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:45.9966160Z #################################                                         46.7%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:46.0967460Z ##################################                                        48.6%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:46.1969050Z ####################################                                      50.5%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:46.2970410Z #####################################                                     52.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:46.3976880Z #######################################                                   54.3%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:46.4977650Z ########################################                                  56.3%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:46.5981840Z #########################################                                 58.2%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:46.6984710Z ###########################################                               60.1%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:46.7986260Z ############################################                              61.7%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:46.8987440Z #############################################                             62.6%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:46.9983440Z ##############################################                            64.6%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:47.1013140Z ###############################################                           66.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:47.2014760Z #################################################                         68.3%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:47.3020550Z ##################################################                        70.2%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:47.4026240Z ###################################################                       72.1%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:47.5028900Z #####################################################                     74.0%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:47.6032510Z ######################################################                    75.9%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:47.7156570Z #######################################################                   77.8%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:47.8160000Z #########################################################                 79.2%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:47.9205340Z #########################################################                 80.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:48.0354570Z ##########################################################                81.1%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:48.1362540Z ###########################################################               82.0%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:48.2365320Z ############################################################              83.9%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:48.3367030Z #############################################################             85.8%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:48.4367590Z ###############################################################           87.7%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:48.5369590Z ################################################################          89.6%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:48.6377610Z #################################################################         91.5%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:48.7378500Z ###################################################################       93.4%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:48.8382690Z ####################################################################      95.2%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:48.9377380Z #####################################################################     97.1%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:48.9905950Z #######################################################################   99.0%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:32:48.9907010Z ######################################################################## 100.0%
+build (macos-13, macos-x86_64)	UNKNOWN STEP	2025-10-05T21:33:12.0953160Z ##[error]The operation was canceled.
