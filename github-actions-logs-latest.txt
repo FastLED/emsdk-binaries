@@ -1,0 +1,272 @@
+build (macos-13, macos-x86_64)	Set up job	﻿2025-10-06T10:12:00.1517210Z Current runner version: '2.328.0'
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1557100Z ##[group]Runner Image Provisioner
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1558240Z Hosted Compute Agent
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1559450Z Version: 20251003.420
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1560540Z Commit: 2377dc5bf0f6cca5c863dfc4fa0dabc70e08de87
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1561710Z Build Date: 2025-10-03T16:01:39Z
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1563060Z ##[endgroup]
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1564490Z ##[group]Operating System
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1565510Z macOS
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1566270Z 13.7.6
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1567040Z 22H625
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1567800Z ##[endgroup]
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1568640Z ##[group]Runner Image
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1569560Z Image: macos-13
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1570380Z Version: 20250908.1476
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1572460Z Included Software: https://github.com/actions/runner-images/blob/macos-13/20250908.1476/images/macos/macos-13-Readme.md
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1575730Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-13%2F20250908.1476
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1577820Z ##[endgroup]
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1581170Z ##[group]GITHUB_TOKEN Permissions
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1584290Z Contents: write
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1585200Z Metadata: read
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1585960Z Pages: write
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1586760Z ##[endgroup]
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1591470Z Secret source: Actions
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.1596280Z Prepare workflow directory
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.2042670Z Prepare all required actions
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.2093060Z Getting action download info
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.4319700Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.6444150Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+build (macos-13, macos-x86_64)	Set up job	2025-10-06T10:12:00.9287320Z Complete job name: build (macos-13, macos-x86_64)
+build (macos-13, macos-x86_64)	Checkout Repository	﻿2025-10-06T10:12:01.0004240Z ##[group]Run actions/checkout@v4
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0005540Z with:
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0006240Z   repository: FastLED/emsdk-binaries
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0007270Z   token: ***
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0007900Z   ssh-strict: true
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0008550Z   ssh-user: git
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0009160Z   persist-credentials: true
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0009880Z   clean: true
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0029820Z   sparse-checkout-cone-mode: true
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0030670Z   fetch-depth: 1
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0031220Z   fetch-tags: false
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0031780Z   show-progress: true
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0032350Z   lfs: false
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0032850Z   submodules: false
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0033420Z   set-safe-directory: true
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.0034920Z ##[endgroup]
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.2611400Z Syncing repository: FastLED/emsdk-binaries
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.2614190Z ##[group]Getting Git version info
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.2616040Z Working directory is '/Users/runner/work/emsdk-binaries/emsdk-binaries'
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.2617760Z [command]/usr/local/bin/git version
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.2723220Z git version 2.50.1
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.2754870Z ##[endgroup]
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.2766760Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/fee42983-0f3d-4cb3-8f2f-c0d573d7d4b8/.gitconfig'
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.2782280Z Temporarily overriding HOME='/Users/runner/work/_temp/fee42983-0f3d-4cb3-8f2f-c0d573d7d4b8' before making global git config changes
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.2784600Z Adding repository directory to the temporary git global config as a safe directory
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.2794600Z [command]/usr/local/bin/git config --global --add safe.directory /Users/runner/work/emsdk-binaries/emsdk-binaries
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.2887720Z Deleting the contents of '/Users/runner/work/emsdk-binaries/emsdk-binaries'
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.2892840Z ##[group]Initializing the repository
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.2898900Z [command]/usr/local/bin/git init /Users/runner/work/emsdk-binaries/emsdk-binaries
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3129050Z hint: Using 'master' as the name for the initial branch. This default branch name
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3132010Z hint: is subject to change. To configure the initial branch name to use in all
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3134220Z hint: of your new repositories, which will suppress this warning, call:
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3135300Z hint:
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3136040Z hint: 	git config --global init.defaultBranch <name>
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3136890Z hint:
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3137830Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3139200Z hint: 'development'. The just-created branch can be renamed via this command:
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3140300Z hint:
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3140920Z hint: 	git branch -m <name>
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3141580Z hint:
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3142480Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3144090Z Initialized empty Git repository in /Users/runner/work/emsdk-binaries/emsdk-binaries/.git/
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3149530Z [command]/usr/local/bin/git remote add origin https://github.com/FastLED/emsdk-binaries
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3239560Z ##[endgroup]
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3240770Z ##[group]Disabling automatic garbage collection
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3244260Z [command]/usr/local/bin/git config --local gc.auto 0
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3591650Z ##[endgroup]
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3593120Z ##[group]Setting up auth
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3602890Z [command]/usr/local/bin/git config --local --name-only --get-regexp core\.sshCommand
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.3686640Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.5147240Z [command]/usr/local/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.5235080Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.6227190Z [command]/usr/local/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.6324470Z ##[endgroup]
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.6325750Z ##[group]Fetching the repository
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:01.6335190Z [command]/usr/local/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +41b88431ad25b18d38c2a517440694cf0eafe0a7:refs/remotes/origin/main
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.3806190Z From https://github.com/FastLED/emsdk-binaries
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.3808060Z  * [new ref]         41b88431ad25b18d38c2a517440694cf0eafe0a7 -> origin/main
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.3885070Z ##[endgroup]
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.3886730Z ##[group]Determining the checkout info
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.3888400Z ##[endgroup]
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.3890550Z [command]/usr/local/bin/git sparse-checkout disable
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.3979470Z [command]/usr/local/bin/git config --local --unset-all extensions.worktreeConfig
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.4052390Z ##[group]Checking out the ref
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.4057090Z [command]/usr/local/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.4215860Z Switched to a new branch 'main'
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.4224130Z branch 'main' set up to track 'origin/main'.
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.4231640Z ##[endgroup]
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.4317390Z [command]/usr/local/bin/git log -1 --format=%H
+build (macos-13, macos-x86_64)	Checkout Repository	2025-10-06T10:12:02.4381770Z 41b88431ad25b18d38c2a517440694cf0eafe0a7
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	﻿2025-10-06T10:12:02.4669570Z ##[group]Run chmod +x install_emscripten.sh
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:02.4671730Z [36;1mchmod +x install_emscripten.sh[0m
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:02.4673550Z [36;1m./install_emscripten.sh[0m
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:02.4801560Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:02.4803670Z ##[endgroup]
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:02.5131000Z Setting optimization flags for SDK compilation:
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:02.5137200Z CFLAGS: -Oz -flto -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-unwind-tables -fno-asynchronous-unwind-tables -fomit-frame-pointer -ffast-math -fno-stack-protector
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:02.5147290Z CXXFLAGS: -Oz -flto -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-unwind-tables -fno-asynchronous-unwind-tables -fomit-frame-pointer -ffast-math -fno-stack-protector
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:02.5154380Z LDFLAGS: -Oz -flto -Wl,--gc-sections -Wl,--strip-all -Wl,--strip-debug -s
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:02.5202310Z Cloning into './.build/emsdk'...
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:03.9477210Z Already up to date.
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:04.6668280Z 
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:04.8043000Z #=#=#                                                                          
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:04.9864240Z ##O#-#                                                                         
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:05.0882480Z                                                                            0.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:05.1874900Z                                                                            0.1%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:05.2875640Z                                                                            0.3%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:05.4134800Z                                                                            0.9%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:05.5325410Z #                                                                          2.2%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:05.6153940Z ###                                                                        5.4%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:05.6903130Z #########                                                                 13.1%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:05.7904070Z ##################                                                        25.9%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:05.8905920Z ###########################                                               37.7%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:05.9900960Z ####################################                                      50.2%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:06.0903600Z ############################################                              61.8%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:06.2024010Z #####################################################                     73.8%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:06.3024420Z #######################################################                   76.5%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:06.3947530Z ###############################################################           88.8%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:06.3948780Z ######################################################################## 100.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:08.9122410Z 
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:09.1784670Z #=#=#                                                                          
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:09.2780000Z                                                                            0.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:09.3791190Z                                                                            0.1%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:09.4798240Z                                                                            0.4%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:09.5807770Z                                                                            1.1%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:09.6816990Z ##                                                                         2.9%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:09.7820730Z #####                                                                      7.9%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:09.9153270Z ##############                                                            20.2%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:10.0252140Z ####################                                                      29.1%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:10.1832680Z ###########################                                               38.7%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:10.4110300Z ######################################                                    53.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:10.5110700Z ################################################                          67.3%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:10.6838390Z ##########################################################                81.3%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:10.7845280Z ##########################################################                81.7%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:10.8656270Z ####################################################################      95.5%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:10.8657660Z ######################################################################## 100.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:13.1148780Z 
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:13.4074040Z #=#=#                                                                          
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:13.5081560Z                                                                            0.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:13.6084530Z                                                                            0.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:13.7090670Z                                                                            0.1%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:13.8093180Z                                                                            0.2%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:13.9124070Z                                                                            0.6%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:14.0121450Z #                                                                          1.6%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:14.1615800Z ##                                                                         3.8%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:14.2616890Z ###                                                                        5.4%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:14.4315750Z #####                                                                      7.2%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:14.5317320Z ######                                                                     8.7%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:14.6343130Z #######                                                                   10.8%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:14.7344190Z #########                                                                 12.9%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:14.8366370Z ##########                                                                15.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:14.9356480Z ############                                                              17.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:15.0360560Z #############                                                             19.1%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:15.1364150Z ###############                                                           21.2%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:15.2369210Z ################                                                          23.2%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:15.3378360Z ##################                                                        25.3%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:15.4387570Z ###################                                                       27.4%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:15.5411130Z #####################                                                     29.5%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:15.6414940Z ######################                                                    31.5%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:15.7422960Z ########################                                                  33.6%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:15.8426600Z #########################                                                 35.7%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:15.9417300Z ###########################                                               37.7%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:16.0423430Z ############################                                              39.8%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:16.1424140Z ##############################                                            41.8%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:16.2427350Z ###############################                                           43.9%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:16.3433920Z #################################                                         45.9%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:16.4437130Z ##################################                                        48.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:16.5442310Z ####################################                                      50.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:16.8250690Z #####################################                                     52.1%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:16.9553010Z #####################################                                     52.7%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:17.0555560Z #######################################                                   54.7%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:17.1558390Z ########################################                                  56.8%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:17.2564080Z ##########################################                                58.4%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:17.3568640Z ###########################################                               60.6%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:17.4576110Z #############################################                             62.6%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:17.5703100Z ##############################################                            64.7%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:17.6708040Z ###############################################                           66.6%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:17.7717590Z #################################################                         68.7%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:17.8721670Z ##################################################                        70.7%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:17.9721060Z ####################################################                      72.8%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:18.0725700Z #####################################################                     74.9%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:18.1731040Z #######################################################                   76.9%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:18.2758710Z ########################################################                  79.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:18.3765230Z ##########################################################                81.1%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:18.4789110Z ###########################################################               83.1%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:18.5807320Z #############################################################             85.2%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:18.6817420Z ##############################################################            87.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:18.7822090Z ################################################################          89.2%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:18.8824790Z #################################################################         91.2%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:18.9814710Z ###################################################################       93.3%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:19.0954160Z ####################################################################      95.3%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:19.1887510Z ######################################################################    97.4%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:19.2179910Z #######################################################################   99.4%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:19.2181320Z ######################################################################## 100.0%
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3281750Z Resolving SDK alias 'latest' to '4.0.15'
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3286030Z Resolving SDK version '4.0.15' to 'sdk-releases-b412b6307e541b93dd93f01b61181e15c17302ec-64bit'
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3288760Z Installing SDK 'sdk-releases-b412b6307e541b93dd93f01b61181e15c17302ec-64bit'..
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3291360Z Installing tool 'node-22.16.0-64bit'..
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3314240Z Downloading: /Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/downloads/node-v22.16.0-darwin-x64.tar.gz from https://storage.googleapis.com/webassembly/emscripten-releases-builds/deps/node-v22.16.0-darwin-x64.tar.gz
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3321950Z Unpacking '/Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/downloads/node-v22.16.0-darwin-x64.tar.gz' to '/Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/node/22.16.0_64bit'
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3325870Z Done installing tool 'node-22.16.0-64bit'.
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3328210Z Installing tool 'python-3.13.3-64bit'..
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3332410Z Downloading: /Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/downloads/python-3.13.3-0-macos-x86_64.tar.gz from https://storage.googleapis.com/webassembly/emscripten-releases-builds/deps/python-3.13.3-0-macos-x86_64.tar.gz
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3388190Z Unpacking '/Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/downloads/python-3.13.3-0-macos-x86_64.tar.gz' to '/Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/python/3.13.3_64bit'
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3398370Z Done installing tool 'python-3.13.3-64bit'.
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3400560Z Installing tool 'releases-b412b6307e541b93dd93f01b61181e15c17302ec-64bit'..
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3405490Z Downloading: /Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/downloads/b412b6307e541b93dd93f01b61181e15c17302ec-wasm-binaries.tar.xz from https://storage.googleapis.com/webassembly/emscripten-releases-builds/mac/b412b6307e541b93dd93f01b61181e15c17302ec/wasm-binaries.tar.xz
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3413690Z Unpacking '/Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/downloads/b412b6307e541b93dd93f01b61181e15c17302ec-wasm-binaries.tar.xz' to '/Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/upstream'
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3433870Z Done installing tool 'releases-b412b6307e541b93dd93f01b61181e15c17302ec-64bit'.
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.3435930Z Done installing SDK 'sdk-releases-b412b6307e541b93dd93f01b61181e15c17302ec-64bit'.
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6114810Z Resolving SDK alias 'latest' to '4.0.15'
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6116430Z Resolving SDK version '4.0.15' to 'sdk-releases-b412b6307e541b93dd93f01b61181e15c17302ec-64bit'
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6117660Z Setting the following tools as active:
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6118380Z    node-22.16.0-64bit
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6118920Z    python-3.13.3-64bit
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6119440Z    releases-b412b6307e541b93dd93f01b61181e15c17302ec-64bit
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6119890Z 
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6120050Z Next steps:
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6120550Z - To conveniently access emsdk tools from the command line,
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6121310Z   consider adding the following directories to your PATH:
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6122110Z     /Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6123250Z     /Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/upstream/emscripten
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6124260Z - This can be done for the current shell by running:
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6125460Z     source "/Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/emsdk_env.sh"
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6127130Z - Configure emsdk in your shell startup scripts by running:
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.6129320Z     echo 'source "/Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/emsdk_env.sh"' >> $HOME/.bash_profile
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.8623090Z Setting up EMSDK environment (suppress these messages with EMSDK_QUIET=1)
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.8624450Z Adding directories to PATH:
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.8625570Z PATH += /Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.8627450Z PATH += /Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/upstream/emscripten
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.8628640Z 
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.8628880Z Setting environment variables:
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.8636010Z PATH = /Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk:/Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/upstream/emscripten:/usr/local/lib/ruby/gems/3.3.0/bin:/usr/local/opt/ruby@3.3/bin:/usr/local/opt/pipx_bin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/Current/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.8644520Z EMSDK = /Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.8646650Z EMSDK_NODE = /Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/node/22.16.0_64bit/bin/node
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.8649000Z EMSDK_PYTHON = /Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/python/3.13.3_64bit/bin/python3
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:51.8652280Z SSL_CERT_FILE = /Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/python/3.13.3_64bit/lib/python3.13/site-packages/certifi/cacert.pem
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:52.1462660Z emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 4.0.15 (09f52557f0d48b65b8c724853ed8f4e8bf80e669)
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:52.2232910Z clang version 22.0.0git (https:/github.com/llvm/llvm-project 3388d40684742e950b3c5d1d2dafe5a40695cfc1)
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:52.2234190Z Target: wasm32-unknown-emscripten
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:52.2234770Z Thread model: posix
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:52.2235890Z InstalledDir: /Users/runner/work/emsdk-binaries/emsdk-binaries/.build/emsdk/upstream/bin
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:52.2481490Z EMSDK installation completed. Creating archive...
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:52.2576590Z ./install_emscripten.sh: line 99: cd: ./.build: No such file or directory
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:52.2577700Z Creating compressed artifact in .build directory: ./.build/emsdk-macos-x86_64.tar.xz
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:52.2578690Z Using XZ compression with maximum compression level...
+build (macos-13, macos-x86_64)	Run Emscripten Setup Script	2025-10-06T10:12:52.2732000Z ##[error]The operation was canceled.
+build (macos-13, macos-x86_64)	Post Checkout Repository	﻿2025-10-06T10:12:52.2886060Z Post job cleanup.
+build (macos-13, macos-x86_64)	Post Checkout Repository	2025-10-06T10:12:52.4196230Z [command]/usr/local/bin/git version
+build (macos-13, macos-x86_64)	Post Checkout Repository	2025-10-06T10:12:52.4277010Z git version 2.50.1
+build (macos-13, macos-x86_64)	Post Checkout Repository	2025-10-06T10:12:52.4321370Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/0ea36648-315a-4264-8b79-0267ee616e25/.gitconfig'
+build (macos-13, macos-x86_64)	Post Checkout Repository	2025-10-06T10:12:52.4342290Z Temporarily overriding HOME='/Users/runner/work/_temp/0ea36648-315a-4264-8b79-0267ee616e25' before making global git config changes
+build (macos-13, macos-x86_64)	Post Checkout Repository	2025-10-06T10:12:52.4343880Z Adding repository directory to the temporary git global config as a safe directory
+build (macos-13, macos-x86_64)	Post Checkout Repository	2025-10-06T10:12:52.4358810Z [command]/usr/local/bin/git config --global --add safe.directory /Users/runner/work/emsdk-binaries/emsdk-binaries
+build (macos-13, macos-x86_64)	Post Checkout Repository	2025-10-06T10:12:52.4454920Z [command]/usr/local/bin/git config --local --name-only --get-regexp core\.sshCommand
+build (macos-13, macos-x86_64)	Post Checkout Repository	2025-10-06T10:12:52.4531730Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build (macos-13, macos-x86_64)	Post Checkout Repository	2025-10-06T10:12:52.5921660Z [command]/usr/local/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build (macos-13, macos-x86_64)	Post Checkout Repository	2025-10-06T10:12:52.5924680Z http.https://github.com/.extraheader
+build (macos-13, macos-x86_64)	Post Checkout Repository	2025-10-06T10:12:52.5929750Z [command]/usr/local/bin/git config --local --unset-all http.https://github.com/.extraheader
+build (macos-13, macos-x86_64)	Post Checkout Repository	2025-10-06T10:12:52.5995720Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build (macos-13, macos-x86_64)	Complete job	﻿2025-10-06T10:12:52.7270260Z Cleaning up orphan processes
+log not found: 52032649751

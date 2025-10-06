@@ -2,8 +2,11 @@
 
 set -e
 
+# Save the original directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Create .build directory for all artifacts
-BUILD_DIR="./.build"
+BUILD_DIR="$SCRIPT_DIR/.build"
 mkdir -p "$BUILD_DIR"
 
 EMSDK_DIR="$BUILD_DIR/emsdk"
